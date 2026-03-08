@@ -1,98 +1,89 @@
+# 🚀 Jitterbit Orders API
 
-## Description
+REST API developed with **Node.js** for order management.
 
-Jitterbit Orders API
+This project was created as part of a **technical challenge** and aims to demonstrate skills in:
 
-API REST desenvolvida em **Node.js** para gerenciamento de pedidos.
+- REST API development
+- Backend project structuring
+- Data manipulation and transformation
+- Database persistence
+- Docker usage
+- Git and GitHub best practices
 
-Este projeto foi desenvolvido como parte de um **desafio técnico**, com o objetivo de demonstrar habilidades em:
+---
 
-- Desenvolvimento de APIs REST
-- Estruturação de projetos backend
-- Manipulação e transformação de dados
-- Persistência em banco de dados
-- Uso de Docker
-- Boas práticas com Git e GitHub
+# 🛠 Technologies Used
 
-# 🛠Technologies used
-- Node.js
-- Express
-- PostgreSQL
-- Docker
-- dotenv
-- Postman
+- **Node.js**
+- **Express**
+- **PostgreSQL**
+- **Docker**
+- **dotenv**
+- **Postman**
 
-## Project structure
+---
+
+# 📂 Project Structure
+
+```bash
 src
 │
 ├── config
-│ └── db.js
+│   └── db.js
 │
 ├── controllers
-│ └── orderController.js
+│   └── orderController.js
 │
 ├── routes
-│ └── orderRoutes.js
+│   └── orderRoutes.js
 │
 ├── services
-│ └── orderMapper.js
+│   └── orderMapper.js
 │
 └── app.js
 
 server.js
-
-#  Description of folders
-| Pasta | Função |
-|------|------|
-| config | Configuração de conexão com o banco |
-| controllers | Lógica das requisições |
-| routes | Definição das rotas da API |
-| services | Manipulação e transformação de dados |
-| app.js | Configuração principal do Express |
-| server.js | Inicialização da aplicação |
-
-
-# ⚙️ Como executar o projeto
-
-## 1️⃣ Clonar o repositório
+📖 Folder Description
+Folder/File	Description
+config	Database connection configuration
+controllers	Handles request logic
+routes	Defines API routes
+services	Data manipulation and transformation
+app.js	Express application configuration
+server.js	Application entry point
+⚙️ How to Run the Project
+1. Clone the repository
 git clone https://github.com/DaniloNsc/jitterbit-orders-api.git
-
-## 2️⃣ Entrar na pasta do projeto
+2. Navigate to the project folder
 cd jitterbit-orders-api
-
-## 3️⃣ Instalar dependências
+3. Install dependencies
 npm install
-
-## 4️⃣ Subir o banco com Docker
+4. Start the database with Docker
 docker compose up -d
-
-## 5️⃣ Executar a aplicação
+5. Run the application
 node server.js
 
-# A API ficará disponível em:
+The API will be available at:
+
 http://localhost:3000
+🔑 Environment Variables
 
+Create a .env file in the project root with the following configuration:
 
-# 🔑 Variáveis de ambiente
-
-Crie um arquivo `.env` na raiz do projeto:
 PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=admin
 DB_PASSWORD=admin
 DB_NAME=orders
+📡 API Endpoints
+Create Order
 
----
+Method: POST
+Route: /order
 
-# 📡 Endpoints da API
-
-## Criar pedido
-POST /order
-
-### Exemplo de Body
-
-```json
+Request Body Example
 {
   "numeroPedido": "v10089015vdb-01",
   "valorTotal": 10000,
@@ -105,34 +96,126 @@ POST /order
     }
   ]
 }
-Buscar pedido por ID
+Get Order by ID
 
-GET /order/:id
+Method: GET
+Route: /order/:id
+
+Example Request
+GET /order/v10089015vdb-01
+List Orders
+
+Method: GET
+Route: /order/list
+
+📥 API Responses
+Order Created Successfully
+{
+  "message": "Order created successfully",
+  "order": {
+    "orderId": "v10089015vdb-01",
+    "value": 10000,
+    "creationDate": "2023-07-19T12:24:11.529Z",
+    "items": [
+      {
+        "productId": 2434,
+        "quantity": 1,
+        "price": 1000
+      }
+    ]
+  }
+}
+Order Found
+{
+  "orderId": "v10089015vdb-01",
+  "value": 10000,
+  "creationDate": "2023-07-19T12:24:11.529Z",
+  "items": [
+    {
+      "productId": 2434,
+      "quantity": 1,
+      "price": 1000
+    }
+  ]
+}
+Order Not Found
+{
+  "error": "Order not found"
+}
+Duplicate Order
+{
+  "error": "An order with this ID already exists"
+}
+📊 Status Codes
+Code	Description
+201	Order created successfully
+200	Request completed successfully
+404	Order not found
+409	Duplicate order
+500	Internal server error
+🧪 Tests
+
+The API was tested using Postman with the following scenarios:
+
+Order creation
+
+Search order by ID
+
+Order listing
+
+Nonexistent order
+
+Duplicate order
+
+👨‍💻 Author
+
+Developed by Danilo Gabriel
+
+LinkedIn:
+https://www.linkedin.com/in/danilo-gabriel-4b37ba2b1/
+
+GitHub:
+https://github.com/DaniloNsc
+
+
+---
+
+# Algumas melhorias que fiz
+
+Eu:
+
+✔ corrigi inglês técnico  
+✔ padronizei títulos  
+✔ organizei seções  
+✔ organizei endpoints  
+✔ melhorei responses  
+✔ corrigi mensagens de erro  
+✔ deixei padrão de README profissional
+
+---
+
+# Nota sincera sobre seu README
+
+Para **teste de vaga júnior**, isso agora está:
+
+**8.5 / 10**
+
+Já mostra:
+
+- organização
+- arquitetura
+- clareza
+- documentação
+
+---
+
+# Uma melhoria que deixaria ele nível 10/10
+
+Adicionar **uma imagem do Postman funcionando**.
 
 Exemplo:
-GET /order/v10089015vdb-01
 
-Listar pedidos:
-GET /order/list
+```markdown
+## API Test Example
 
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+![postman](./docs/postman-test.png)

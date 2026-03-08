@@ -1,15 +1,20 @@
-# Jitterbit Orders API
 
-API REST desenvolvida em Node.js para gerenciamento de pedidos.
+## Description
 
-Este projeto foi criado como parte de um desafio técnico e permite:
+Jitterbit Orders API
 
-- criar pedidos
-- buscar pedidos por ID
-- listar pedidos cadastrados
+API REST desenvolvida em **Node.js** para gerenciamento de pedidos.
 
-## Tecnologias utilizadas
+Este projeto foi desenvolvido como parte de um **desafio técnico**, com o objetivo de demonstrar habilidades em:
 
+- Desenvolvimento de APIs REST
+- Estruturação de projetos backend
+- Manipulação e transformação de dados
+- Persistência em banco de dados
+- Uso de Docker
+- Boas práticas com Git e GitHub
+
+# 🛠Technologies used
 - Node.js
 - Express
 - PostgreSQL
@@ -17,139 +22,117 @@ Este projeto foi criado como parte de um desafio técnico e permite:
 - dotenv
 - Postman
 
-## Estrutura do projeto
-
-```text
+## Project structure
 src
+│
 ├── config
-│   └── db.js
+│ └── db.js
+│
 ├── controllers
-│   └── orderController.js
+│ └── orderController.js
+│
 ├── routes
-│   └── orderRoutes.js
+│ └── orderRoutes.js
+│
 ├── services
-│   └── orderMapper.js
+│ └── orderMapper.js
+│
 └── app.js
 
 server.js
 
-## Como executar o projeto
+#  Description of folders
+| Pasta | Função |
+|------|------|
+| config | Configuração de conexão com o banco |
+| controllers | Lógica das requisições |
+| routes | Definição das rotas da API |
+| services | Manipulação e transformação de dados |
+| app.js | Configuração principal do Express |
+| server.js | Inicialização da aplicação |
 
-1. Clonar o repositório
+
+# ⚙️ Como executar o projeto
+
+## 1️⃣ Clonar o repositório
 git clone https://github.com/DaniloNsc/jitterbit-orders-api.git
 
-2. Entrar na pasta do projeto
+## 2️⃣ Entrar na pasta do projeto
 cd jitterbit-orders-api
 
-3. Instalar as dependências
+## 3️⃣ Instalar dependências
 npm install
 
-4. Subir o banco com Docker
+## 4️⃣ Subir o banco com Docker
 docker compose up -d
 
-5. Rodar a aplicação
+## 5️⃣ Executar a aplicação
 node server.js
 
-A API ficará disponível em:
-
+# A API ficará disponível em:
 http://localhost:3000
-Variáveis de ambiente
 
-Crie um arquivo .env na raiz do projeto com este conteúdo:
 
+# 🔑 Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto:
 PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=admin
 DB_PASSWORD=admin
 DB_NAME=orders
-Endpoints
-Criar pedido
+
+---
+
+# 📡 Endpoints da API
+
+## Criar pedido
 POST /order
 
-Exemplo de body:
+### Exemplo de Body
 
+```json
 {
   "numeroPedido": "v10089015vdb-01",
   "valorTotal": 10000,
-  "dataCriacao": "2023-07-19T12:24:11.5299601+00:00",
+  "dataCriacao": "2023-07-19T12:24:11.529Z",
   "items": [
     {
-      "idItem": "2434",
+      "idItem": 2434,
       "quantidadeItem": 1,
       "valorItem": 1000
     }
   ]
 }
 Buscar pedido por ID
+
 GET /order/:id
 
 Exemplo:
-
 GET /order/v10089015vdb-01
-Listar pedidos
+
+Listar pedidos:
 GET /order/list
-Respostas esperadas
-Pedido criado com sucesso
-{
-  "message": "Pedido criado com sucesso",
-  "order": {
-    "orderId": "v10089015vdb-01",
-    "value": 10000,
-    "creationDate": "2023-07-19T12:24:11.529Z",
-    "items": [
-      {
-        "productId": 2434,
-        "quantity": 1,
-        "price": 1000
-      }
-    ]
-  }
-}
-Pedido encontrado
-{
-  "orderId": "v10089015vdb-01",
-  "value": 10000,
-  "creationDate": "2023-07-19T12:24:11.529Z",
-  "items": [
-    {
-      "productId": 2434,
-      "quantity": 1,
-      "price": 1000
-    }
-  ]
-}
-Pedido não encontrado
-{
-  "error": "Pedido não encontrado"
-}
-Pedido duplicado
-{
-  "error": "Já existe um pedido com esse ID"
-}
-Status codes
-201 Created  -> pedido criado com sucesso
-200 OK       -> consulta realizada com sucesso
-404 Not Found -> pedido não encontrado
-409 Conflict -> pedido duplicado
-500 Internal Server Error -> erro interno
-Testes realizados
 
-A API foi testada com Postman nos seguintes cenários:
 
-criação de pedido
+# e2e tests
+$ yarn run test:e2e
 
-busca por ID
+# test coverage
+$ yarn run test:cov
 
-listagem de pedidos
 
-pedido inexistente
+## Support
 
-pedido duplicado
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-Autor
+## Stay in touch
 
-Desenvolvido por Danilo Gabriel.
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-GitHub:
-https://github.com/DaniloNsc
+## License
+
+Nest is [MIT licensed](LICENSE).

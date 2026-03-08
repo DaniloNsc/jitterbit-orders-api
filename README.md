@@ -1,4 +1,3 @@
-# RAM Optimizer Windows
 # 🚀 Jitterbit Orders API
 
 Automação em **PowerShell** para executar o **RAMMap** (Microsoft Sysinternals) em intervalo configurável, facilitando a rotina de monitoramento/gestão de memória no Windows.
@@ -9,7 +8,7 @@ Este projeto foi criado como parte de um **desafio técnico** e demonstra habili
 - Desenvolvimento de APIs REST
 - Estruturação de projetos backend
 - Manipulação e transformação de dados
-- Persistência em banco de dados
+- Persistência em banco de dadosgit add .
 - Uso de Docker
 - Boas práticas com Git e GitHub
 

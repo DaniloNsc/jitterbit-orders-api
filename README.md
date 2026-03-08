@@ -285,8 +285,6 @@ A API foi validada com Postman nos seguintes cenários:
 - Busca de pedido inexistente
 - Tentativa de criação de pedido duplicado
 
-> Sugestão: adicione um print dos testes no Postman para fortalecer a documentação.
-
 ---
 
 ## 👨‍💻 Autor

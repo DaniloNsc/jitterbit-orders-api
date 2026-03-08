@@ -1,7 +1,6 @@
 # 🚀 Jitterbit Orders API
 
-Automação em **PowerShell** para executar o **RAMMap** (Microsoft Sysinternals) em intervalo configurável, facilitando a rotina de monitoramento/gestão de memória no Windows.
-REST API desenvolvida com **Node.js** para gerenciamento de pedidos.
+API REST desenvolvida com Node.js para gerenciamento de pedidos.
 
 Este projeto foi criado como parte de um **desafio técnico** e demonstra habilidades em:
 
@@ -17,13 +16,6 @@ Este projeto foi criado como parte de um **desafio técnico** e demonstra habili
 ## 📌 1) Visão geral
 ## 🛠 Tecnologias Utilizadas
 
-Este projeto contém um script PowerShell pronto para uso com:
-- Validação do caminho do executável do RAMMap
-- Execução em loop contínuo
-- Intervalo customizável
-- Modo de execução única (`-RunOnce`)
-- Logs simples no console
-- Proteção contra múltiplas instâncias simultâneas do RAMMap
 - **Node.js**
 - **Express**
 - **PostgreSQL**
@@ -37,10 +29,7 @@ Este projeto contém um script PowerShell pronto para uso com:
 ## 📂 Estrutura do Projeto
 
 ```txt
-ram-optimizer-windows/
-├── script.ps1   # Script principal
-└── README.md    # Documentação técnica
-```bash
+
 src
 ├── config
 │   └── db.js
@@ -71,70 +60,37 @@ server.js
 ## ⚙️ 3) Funcionamento interno
 ## ⚙️ Como Executar o Projeto
 
-Fluxo do `script.ps1`:
-1. Recebe parâmetros (`-RamMapPath`, `-IntervalSeconds`, `-RunOnce`)
-2. Normaliza o caminho e valida se o executável existe
-3. Verifica se já existe instância do RAMMap em execução
-4. Executa o RAMMap com `Start-Process` (somente se não houver instância ativa)
-5. Se `-RunOnce` estiver ativo, encerra
-6. Caso contrário, aguarda e repete
-1. **Clone o repositório**
 
-### Parâmetros
-- `-RamMapPath` (string): caminho do `RAMMap.exe`
-- `-IntervalSeconds` (int): intervalo entre execuções (mínimo: 5s)
-- `-RunOnce` (switch): executa uma vez e encerra
+1. **Clone o repositório**
 ```bash
 git clone https://github.com/DaniloNsc/jitterbit-orders-api.git
 ```
 
----
 2. **Acesse a pasta do projeto**
-
-## ▶️ 4) Como executar
 ```bash
 cd jitterbit-orders-api
 ```
 
-### Pré-requisitos
-- Windows 10/11
-- PowerShell 5+
-- RAMMap instalado
-3. **Instale as dependências**
-
-### Execução padrão (loop a cada 5 minutos)
-```powershell
-powershell -ExecutionPolicy Bypass -File .\script.ps1
+3. **Instalar as dependências**
 ```bash
-npm install
+Instalar as dependências
 ```
 
-### Execução com caminho customizado e intervalo de 2 minutos
-```powershell
-powershell -ExecutionPolicy Bypass -File .\script.ps1 -RamMapPath "C:\Tools\RAMMap\RAMMap.exe" -IntervalSeconds 120
-4. **Suba o banco de dados com Docker**
-
+4. **Iniciar o banco de dados com Docker**
 ```bash
-docker compose up -d
+Idocker compose up -d
 ```
 
-### Execução única
-```powershell
-powershell -ExecutionPolicy Bypass -File .\script.ps1 -RunOnce
-5. **Inicie a aplicação**
-
+5. **Executar a aplicação**
 ```bash
 node server.js
 ```
+A API estará disponível em:
+```
+http://localhost:3000
+```
 
-A API ficará disponível em:
-
-- `http://localhost:3000`
-
----
-
-## 🔐 5) Segurança
-## 🔑 Variáveis de Ambiente
+## 🔑 4) Variáveis de Ambiente
 
 Crie um arquivo `.env` na raiz do projeto com a seguinte configuração:
 
@@ -147,28 +103,17 @@ DB_USER=admin
 DB_PASSWORD=admin
 DB_NAME=orders
 ```
-
 ---
 
-## 🚀 6) Como criar um repositório separado só para este projeto
+## 🚀 5) Como criar um repositório separado só para este projeto
 ## 📡 Endpoints da API
 
 Se hoje o código está em um repositório geral/perfil, faça assim:
 ### 1) Criar Pedido
 
-1. Crie um novo repositório no GitHub (exemplo: `ram-optimizer-windows`).
-2. No computador local, mantenha apenas os arquivos deste projeto (`script.ps1` e `README.md`) em uma pasta própria.
-3. Rode os comandos abaixo dentro da pasta do projeto:
 - **Método:** `POST`
 - **Rota:** `/order`
 
-```bash
-git init
-git add .
-git commit -m "feat: initial RAM Optimizer Windows project"
-git branch -M main
-git remote add origin https://github.com/<seu-usuario>/ram-optimizer-windows.git
-git push -u origin main
 **Exemplo de body:**
 
 ```json
@@ -205,7 +150,6 @@ GET /order/v10089015vdb-01
 
 ---
 
-## 📄 Licença
 ## 📥 Respostas da API
 
 ### Pedido criado com sucesso
